@@ -23,6 +23,11 @@ public class FileController  {
         return fileService.readFile("test.txt");
     }
 
+    @GetMapping("/read-text-2")
+    public List<String> readText2() throws IOException {
+        return fileService.readFile("test2.txt");
+    }
+
     @GetMapping("/hello-world")
     public String helloWorld() {
        return "Hello Universe!";

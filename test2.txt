@@ -1,0 +1,4 @@
+This is the second test text file
+Purely to test out Auto Reload
+TESTING
+NICE! Don't have to stop server and restart server to see changes to data
