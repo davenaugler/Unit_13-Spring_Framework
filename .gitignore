@@ -1,9 +1,19 @@
-### IntelliJ IDEA ###
-.idea*
-lib*
-*.iml
-out/
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
+.mvn
+.settings
+target
+
+### IntelliJ IDEA ###
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
 
 !**/src/main/**/out/
 !**/src/test/**/out/
@@ -19,13 +29,6 @@ out/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
 
 ### VS Code ###
 .vscode/
