@@ -1,6 +1,7 @@
 package com.coderscampus.unit13.web;
 
 import com.coderscampus.unit13.service.FileService;
+import org.apache.catalina.core.ApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,9 +12,15 @@ import java.util.List;
 
 @RestController
 public class FileController  {
+    // Constructor Injection using @Autowired
+    private ApplicationContext applicationContext;
+    private FileService fileService;
 
     @Autowired
-    private FileService fileService;
+    public void YourService(ApplicationContext applicationContext, FileService fileService) {
+        this.applicationContext = applicationContext;
+        this.fileService = fileService;
+    }
 
     // GetMapping() listens for GET requests related to the URL path
     // GetMapping() is what we use to listen for a request on a certain path
