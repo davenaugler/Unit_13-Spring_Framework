@@ -17,8 +17,7 @@ public class FileController  {
     private FileService fileService;
 
     @Autowired
-    public void YourService(ApplicationContext applicationContext, FileService fileService) {
-        this.applicationContext = applicationContext;
+    public void YourService(FileService fileService) {
         this.fileService = fileService;
     }
 
@@ -27,6 +26,8 @@ public class FileController  {
     //   and direct it to a certain method
     @GetMapping("/read-lines")
     public List<String> readLines() throws IOException {
+        FileService fileService = applicationContext.getBean(FileService.class);
+        System.out.println(fileService);
         return fileService.readFile("test.txt");
     }
 
