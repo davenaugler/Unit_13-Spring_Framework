@@ -1,8 +1,6 @@
 package com.coderscampus.unit13.web;
 
 import com.coderscampus.unit13.service.FileService;
-import org.apache.catalina.core.ApplicationContext;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,12 +10,10 @@ import java.util.List;
 
 @RestController
 public class FileController  {
-    // Constructor Injection using @Autowired
-    private ApplicationContext applicationContext;
     private FileService fileService;
 
-    @Autowired
-    public void YourService(FileService fileService) {
+   // Constructor for dependency injection
+    public void FileController(FileService fileService) {
         this.fileService = fileService;
     }
 
@@ -26,8 +22,8 @@ public class FileController  {
     //   and direct it to a certain method
     @GetMapping("/read-lines")
     public List<String> readLines() throws IOException {
-        FileService fileService = applicationContext.getBean(FileService.class);
-        System.out.println(fileService);
+       // Directly use the fileService, no need to get it from the ApplicationContext
+        System.out.println(fileService); // For me to see
         return fileService.readFile("test.txt");
     }
 
