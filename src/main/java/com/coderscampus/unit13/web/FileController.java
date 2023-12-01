@@ -1,29 +1,52 @@
 package com.coderscampus.unit13.web;
 
 import com.coderscampus.unit13.service.FileService;
+import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 
 @RestController
-public class FileController  {
-    private FileService fileService;
+public class FileController {
 
-   // Constructor for dependency injection
-    public void FileController(FileService fileService) {
+    private final ApplicationContext applicationContext;
+    private final FileService fileService;
+
+    public FileController(ApplicationContext applicationContext, FileService fileService) {
+        this.applicationContext = applicationContext;
         this.fileService = fileService;
     }
 
-    // GetMapping() listens for GET requests related to the URL path
-    // GetMapping() is what we use to listen for a request on a certain path
-    //   and direct it to a certain method
+    @GetMapping("/customer-report")
+    public Integer getCustomerData(Integer customerId) {
+        Integer customerData = 0;
+        // fetch data based on customerId
+        customerData = getCustomerDataById(customerId);
+        return customerData;
+    }
+
+    private Integer getCustomerDataById(Integer customerId) {
+        return new Random().nextInt();
+    }
+
     @GetMapping("/read-lines")
     public List<String> readLines() throws IOException {
-       // Directly use the fileService, no need to get it from the ApplicationContext
-        System.out.println(fileService); // For me to see
+        System.out.println(fileService);
+        FileService fileService = applicationContext.getBean(FileService.class);
+        System.out.println(fileService);
+        fileService = applicationContext.getBean(FileService.class);
+        System.out.println(fileService);
+        fileService = applicationContext.getBean(FileService.class);
+        System.out.println(fileService);
+        fileService = applicationContext.getBean(FileService.class);
+        System.out.println(fileService);
+        fileService = applicationContext.getBean(FileService.class);
+        System.out.println(fileService);
+
         return fileService.readFile("test.txt");
     }
 
@@ -32,14 +55,14 @@ public class FileController  {
         return fileService.readFile("test2.txt");
     }
 
-    @GetMapping("/hello-world")
-    public String helloWorld() {
-       return "Hello Universe!";
+    @GetMapping("/hello-universe")
+    public String helloUniverse() {
+        return "Hello Universe!";
     }
 
     @PostMapping("/hello-world")
     public String helloWorldPost() {
         return "You just POSTED some data!";
     }
-
 }
+
