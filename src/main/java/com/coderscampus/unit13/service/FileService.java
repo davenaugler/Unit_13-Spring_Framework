@@ -10,9 +10,6 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @Service
-// Example of what not to do
-//    Applying Scope removes the Singleton capability
-//@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class FileService {
 
     public List<String> readFile(String filename) throws IOException {
