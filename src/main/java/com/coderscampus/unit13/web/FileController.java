@@ -1,5 +1,6 @@
 package com.coderscampus.unit13.web;
 
+import com.coderscampus.unit13.domain.User;
 import com.coderscampus.unit13.service.FileService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,9 +13,12 @@ import java.util.Random;
 @RestController
 public class FileController {
     private final FileService fileService;
+    private final User user;
 
-    public FileController(FileService fileService) {
+
+    public FileController(FileService fileService, User user) {
         this.fileService = fileService;
+        this.user = user;
     }
 
     @GetMapping("/customer-report")
@@ -31,14 +35,16 @@ public class FileController {
 
     @GetMapping("/read-lines")
     public List<String> readLines() throws IOException {
+        System.out.println("User: " + user);
 
-
-        return fileService.readFile("test.txt");
+//        return fileService.readFile("test.txt");
+        return fileService.readFile();
     }
 
     @GetMapping("/read-text-2")
     public List<String> readText2() throws IOException {
-        return fileService.readFile("test2.txt");
+//        return fileService.readFile("test2.txt");
+        return fileService.readFile();
     }
 
     @GetMapping("/hello-universe")
@@ -50,5 +56,6 @@ public class FileController {
     public String helloWorldPost() {
         return "You just POSTED some data!";
     }
+
 }
 

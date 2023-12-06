@@ -6,7 +6,7 @@ public class User {
     private String name;
 
     public User (String username, String password, String name) {
-        this.name = username;
+        this.username = username;
         this.password = password;
         this.name = name;
     }
@@ -34,4 +34,18 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "User[" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ']';
+    }
+
+//    @Override
+//    public String toString() {
+//        return "User [username = " + username + ", password= " + password + ", name= " + name + "]";
+//    }
 }
