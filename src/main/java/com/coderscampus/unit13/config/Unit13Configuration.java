@@ -1,4 +1,4 @@
-package com.coderscampus;
+package com.coderscampus.unit13.config;
 
 import com.coderscampus.unit13.domain.User;
 import com.coderscampus.unit13.service.FileService;

@@ -2,6 +2,7 @@ package com.coderscampus.unit13.web;
 
 import com.coderscampus.unit13.domain.User;
 import com.coderscampus.unit13.service.FileService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,15 @@ import java.util.Random;
 
 @RestController
 public class FileController {
+
+    @Value("${superuser.username}")
+    private String superuserUserName;
+
+    @Value("${superuser.password}")
+    private String superuserPassword;
+
+    @Value("${superuser.name}")
+    private String superuserName;
     private final FileService fileService;
     private final User user;
 
@@ -36,6 +46,10 @@ public class FileController {
     @GetMapping("/read-lines")
     public List<String> readLines() throws IOException {
         System.out.println("User: " + user);
+
+        System.out.println("UserName: " + superuserUserName);
+        System.out.println("Password: " + superuserPassword);
+        System.out.println("Name: " + superuserName);
 
 //        return fileService.readFile("test.txt");
         return fileService.readFile();
