@@ -2,6 +2,7 @@ package com.coderscampus.unit13.web;
 
 import com.coderscampus.unit13.domain.User;
 import com.coderscampus.unit13.service.FileService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,10 +24,10 @@ public class FileController {
     @Value("${superuser.name}")
     private String superuserName;
     private final FileService fileService;
+
     private final User user;
 
-
-    public FileController(FileService fileService, User user) {
+    public FileController(FileService fileService,  @Qualifier("regularUser") User user) {
         this.fileService = fileService;
         this.user = user;
     }

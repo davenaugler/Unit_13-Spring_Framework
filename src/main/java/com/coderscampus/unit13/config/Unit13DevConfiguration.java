@@ -17,9 +17,17 @@ public class Unit13DevConfiguration {
         return new FileService("test.txt");
     }
 
+    // The below context is for illustration purposes only. Users wouldn't be stored as Beans,
+    // they would be stored in a database.
+
     @Bean
-    public User user() {
-        return new User("alexsmith", "password", "Alex Smith");
+    public User superUser() {
+        return new User("superDave@gmail.com", "superUser", "Dave");
+    }
+
+    @Bean
+    public User regularUser() {
+        return new User("regularJoe@gmail.com", "regularUser", "Dave");
     }
 
 }
