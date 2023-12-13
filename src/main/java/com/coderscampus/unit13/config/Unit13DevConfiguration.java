@@ -17,8 +17,8 @@ public class Unit13DevConfiguration {
         return new FileService("test.txt");
     }
 
-    // The below context is for illustration purposes only. Users wouldn't be stored as Beans,
-    // they would be stored in a database.
+//     The below context is for illustration purposes only. Users wouldn't be stored as Beans,
+//     they would be stored in a database.
 
     @Bean
     public User superUser() {
